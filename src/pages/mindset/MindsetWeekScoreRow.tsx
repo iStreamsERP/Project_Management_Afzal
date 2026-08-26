@@ -25,7 +25,7 @@ export function MindsetWeekScoreRow({ logs, loading }: Props) {
         <Skeleton className="mb-1 h-3 w-16 shrink-0" />
         <div className="grid min-h-0 flex-1 grid-cols-7 gap-1">
           {days.map((d) => (
-            <Skeleton key={formatDateKey(d)} className="min-h-0 rounded-md border border-[#2A2F47]" style={{ backgroundColor: '#141726' }} />
+            <Skeleton key={formatDateKey(d)} className="min-h-0 rounded-md border border-border" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
           ))}
         </div>
       </div>
@@ -45,15 +45,15 @@ export function MindsetWeekScoreRow({ logs, loading }: Props) {
           return (
             <div
               key={formatDateKey(d)}
-              className={`flex flex-col items-center justify-center rounded-md border bg-[#141726] px-0.5 py-1 ${
-                isToday ? 'border-[#6C63FF] ring-1 ring-[#6C63FF]/40' : 'border-[#2A2F47]'
+              className={`flex flex-col items-center justify-center rounded-md border bg-card px-0.5 py-1 ${
+                isToday ? 'border-accent1 ring-1 ring-accent1/40' : 'border-border'
               }`}
             >
               <span className="text-[10px] font-semibold text-text-primary">{dayName}</span>
               <span className="text-[9px] text-text-muted">{dateLine}</span>
               <span
                 className="mt-0.5 text-lg font-bold tabular-nums leading-none"
-                style={{ color: score === null ? '#6B7280' : scoreColor(score) }}
+                style={{ color: score === null ? 'rgb(var(--color-text-muted))' : scoreColor(score) }}
               >
                 {score === null ? '—' : score}
               </span>

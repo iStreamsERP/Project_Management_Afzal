@@ -35,11 +35,11 @@ const HABIT_EMOJI_OPTIONS = [
   '🔥',
 ] as const
 
-const INCOMPLETE_CELL_BASE = 'bg-[#1C2035] text-transparent'
+const INCOMPLETE_CELL_BASE = 'bg-surface2 text-transparent'
 const HABIT_COL_CLASS =
-  'sticky left-0 z-20 w-[160px] max-w-[160px] border-r border-[#2A2F47] bg-[#141726] px-2'
+  'sticky left-0 z-20 w-[160px] max-w-[160px] border-r border-border bg-card px-2'
 const DAY_COL_CLASS = 'w-6 min-w-[24px] max-w-[24px]'
-const HABIT_DATA_ROW_CLASS = 'border-b border-[#2A2F47]/60'
+const HABIT_DATA_ROW_CLASS = 'border-b border-border/60'
 const HABIT_ROW_CELL_PY = 'py-2.5'
 const CELL_CLASS =
   'mx-auto flex h-[18px] w-[18px] items-center justify-center rounded-[3px] border border-solid text-[8px] font-semibold leading-none'
@@ -304,7 +304,7 @@ export default function HabitsPage() {
       )}
 
       {token && (
-        <header className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-[#2A2F47] bg-[#141726] px-3 py-2">
+        <header className="flex shrink-0 flex-wrap items-center gap-x-3 gap-y-2 rounded-lg border border-border bg-card px-3 py-2">
           <div
             className="flex min-w-0 items-center gap-1"
           >
@@ -329,7 +329,7 @@ export default function HabitsPage() {
             </button>
           </div>
 
-          <div className="hidden h-5 w-px bg-[#2A2F47] sm:block" aria-hidden />
+          <div className="hidden h-5 w-px bg-border sm:block" aria-hidden />
 
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
             <Stat label="Habits" value={String(habits.length)} />
@@ -337,10 +337,10 @@ export default function HabitsPage() {
             <div className="flex min-w-[8rem] items-center gap-2">
               <span className="text-text-muted">Progress</span>
               <div
-                className="h-2 min-w-[5rem] flex-1 overflow-hidden rounded-full bg-[#0c0e18]"
+                className="h-2 min-w-[5rem] flex-1 overflow-hidden rounded-full bg-background"
               >
                 <div
-                  className="h-full rounded-full bg-[#FFB84C] transition-all"
+                  className="h-full rounded-full bg-accent4 transition-all"
                   style={{ width: `${overallPct}%` }}
                 />
               </div>
@@ -360,8 +360,8 @@ export default function HabitsPage() {
 
       {token && loading && (
         <div className="grid min-h-0 flex-1 grid-cols-[1fr_200px] gap-2">
-          <Skeleton className="rounded-lg border border-[#2A2F47]" style={{ backgroundColor: '#141726' }} />
-          <Skeleton className="rounded-lg border border-[#2A2F47]" style={{ backgroundColor: '#141726' }} />
+          <Skeleton className="rounded-lg border border-border" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
+          <Skeleton className="rounded-lg border border-border" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
         </div>
       )}
 
@@ -379,7 +379,7 @@ export default function HabitsPage() {
       {token && !loading && habits.length > 0 && (
         <div className="grid min-h-0 flex-1 grid-cols-1 gap-1 lg:grid-cols-[minmax(0,1fr)_200px]">
           <div className="flex min-h-0 min-w-0 flex-col gap-1">
-            <div className="min-h-0 flex-1 overflow-auto rounded-lg border border-[#2A2F47] bg-[#141726]">
+            <div className="min-h-0 flex-1 overflow-auto rounded-lg border border-border bg-card">
               <table className="w-max min-w-full border-collapse text-xs">
                 <thead className="sticky top-0 z-30">
                   <tr>
@@ -396,14 +396,14 @@ export default function HabitsPage() {
                         key={`${band.weekIndex}-${band.label}`}
                         colSpan={band.colspan}
                         scope="colgroup"
-                        className="h-6 border-b border-[#2A2F47] px-0 text-center text-[10px] font-semibold leading-6 text-white"
+                        className="h-6 border-b border-border px-0 text-center text-[10px] font-semibold leading-6 text-white"
                         style={{ backgroundColor: band.color }}
                       >
                         {band.label}
                       </th>
                     ))}
                   </tr>
-                  <tr className="border-b border-[#2A2F47]">
+                  <tr className="border-b border-border">
                     {dayNumbers.map((d) => {
                       const dateKey = formatDateKey(new Date(viewYear, viewMonth - 1, d))
                       const band = weekBandColorForDay(d)
@@ -474,8 +474,8 @@ export default function HabitsPage() {
                                 done
                                   ? { backgroundColor: weekHex, borderColor: weekHex }
                                   : {
-                                      backgroundColor: '#1C2035',
-                                      borderColor: isFuture ? '#2A2F47' : incompleteBorder,
+                                      backgroundColor: 'rgb(var(--color-surface2))',
+                                      borderColor: isFuture ? 'rgb(var(--color-border))' : incompleteBorder,
                                     }
                               }
                               aria-label={`${h.name} on ${dateKey}: ${done ? 'completed' : 'not completed'}`}
@@ -494,7 +494,7 @@ export default function HabitsPage() {
               </table>
             </div>
 
-            <div className="h-[160px] max-h-[160px] shrink-0 rounded-lg border border-[#2A2F47] bg-[#141726] p-2">
+            <div className="h-[160px] max-h-[160px] shrink-0 rounded-lg border border-border bg-card p-2">
               <p className="text-[10px] font-medium uppercase tracking-wide text-text-muted">Daily completion trend</p>
               <div className="mt-1 h-[132px] w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -505,20 +505,20 @@ export default function HabitsPage() {
                         <stop offset="100%" stopColor="#00D4AA" stopOpacity={0} />
                       </linearGradient>
                     </defs>
-                    <CartesianGrid stroke="#2A2F47" strokeDasharray="3 3" vertical={false} />
-                    <XAxis dataKey="day" tick={{ fill: '#9CA3AF', fontSize: 9 }} axisLine={false} tickLine={false} />
+                    <CartesianGrid stroke="rgb(var(--color-border))" strokeDasharray="3 3" vertical={false} />
+                    <XAxis dataKey="day" tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 9 }} axisLine={false} tickLine={false} />
                     <YAxis
                       domain={[0, 100]}
                       width={28}
-                      tick={{ fill: '#9CA3AF', fontSize: 9 }}
+                      tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 9 }}
                       axisLine={false}
                       tickLine={false}
                       tickFormatter={(x) => `${x}%`}
                     />
                     <Tooltip
                       contentStyle={{
-                        backgroundColor: '#141726',
-                        border: '1px solid #2A2F47',
+                        backgroundColor: 'rgb(var(--color-card))',
+                        border: '1px solid rgb(var(--color-border))',
                         borderRadius: 6,
                         fontSize: 11,
                       }}
@@ -538,7 +538,7 @@ export default function HabitsPage() {
             </div>
           </div>
 
-          <aside className="flex min-h-0 flex-col overflow-hidden rounded-lg border border-[#2A2F47] bg-[#141726] p-2 lg:max-h-none">
+          <aside className="flex min-h-0 flex-col overflow-hidden rounded-lg border border-border bg-card p-2 lg:max-h-none">
             <p className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-text-muted">Analysis</p>
             <ul className="mt-2 min-h-0 flex-1 space-y-2 overflow-y-auto pr-0.5">
               {habitAnalysis.map(({ habit: h, pct }) => (
@@ -550,7 +550,7 @@ export default function HabitsPage() {
                     </span>
                     <span className="shrink-0 tabular-nums font-semibold text-text-primary">{pct}%</span>
                   </div>
-                  <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-[#0c0e18]">
+                  <div className="mt-1 h-1.5 w-full overflow-hidden rounded-full bg-background">
                     <div
                       className="h-full rounded-full"
                       style={{ width: `${pct}%`, backgroundColor: h.color }}
@@ -661,7 +661,7 @@ function Stat({ label, value, accent }: { label: string; value: string; accent?:
   return (
     <div className="flex items-baseline gap-1.5 whitespace-nowrap">
       <span className="text-text-muted">{label}</span>
-      <span className={accent ? 'font-bold tabular-nums text-[#00D4AA]' : 'font-bold tabular-nums text-text-primary'}>
+      <span className={accent ? 'font-bold tabular-nums text-accent2' : 'font-bold tabular-nums text-text-primary'}>
         {value}
       </span>
     </div>
@@ -687,7 +687,7 @@ function StatsRow({
   className?: string
 }) {
   return (
-    <tr className="border-t border-[#2A2F47]/80 bg-[#0c0e18]/40">
+    <tr className="border-t border-border/80 bg-background/40">
       <th scope="row" className={`${HABIT_COL_CLASS} py-0.5 text-left text-[10px] font-medium text-text-muted`}>
         {label}
       </th>

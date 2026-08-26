@@ -128,13 +128,13 @@ function DayColumn({
     <article
       className={cn(
         'flex min-h-[320px] min-w-[10.5rem] flex-col rounded-lg border p-5',
-        isToday ? 'border-[#6C63FF] ring-1 ring-[#6C63FF]/50' : 'border-[#2A2F47]',
+        isToday ? 'border-accent1 ring-1 ring-accent1/50' : 'border-border',
       )}
       style={{ backgroundColor: tint }}
     >
       <header className="text-center">
         <p
-          className={cn('font-bold leading-tight', isToday ? 'text-[#6C63FF]' : 'text-text-primary')}
+          className={cn('font-bold leading-tight', isToday ? 'text-accent1' : 'text-text-primary')}
           style={{ fontSize: '22px' }}
         >
           {weekday}
@@ -162,7 +162,7 @@ function DayColumn({
                   <div
                     className={cn(
                       'flex items-start gap-1 rounded px-1 py-1.5 text-xs',
-                      done ? 'text-text-primary' : 'border-l-2 bg-[#141726]/80 text-text-primary',
+                      done ? 'text-text-primary' : 'border-l-2 bg-card/80 text-text-primary',
                     )}
                     style={
                       done
@@ -193,7 +193,7 @@ function DayColumn({
                         <button
                           type="button"
                           onClick={() => onEditTask(task)}
-                          className="rounded p-0.5 text-[#4FC3F7] hover:bg-[#4FC3F7]/15"
+                          className="rounded p-0.5 text-accent5 hover:bg-accent5/15"
                           title="Edit task"
                           aria-label={`Edit ${taskDisplayTitle(task)}`}
                         >
@@ -202,7 +202,7 @@ function DayColumn({
                         <button
                           type="button"
                           onClick={() => void onDeleteTask(task)}
-                          className="rounded p-0.5 text-[#FF6B9D] hover:bg-[#FF6B9D]/15"
+                          className="rounded p-0.5 text-accent3 hover:bg-accent3/15"
                           title="Delete task"
                           aria-label={`Delete ${taskDisplayTitle(task)}`}
                         >
@@ -222,13 +222,13 @@ function DayColumn({
         type="button"
         disabled={!token}
         onClick={() => onAddForDay(day)}
-        className="mt-2 flex w-full items-center justify-center gap-0.5 rounded border border-[#2A2F47] bg-[#141726]/80 py-1.5 text-xs text-[#4FC3F7] hover:border-[#4FC3F7]/50 hover:bg-[#141726] disabled:opacity-40"
+        className="mt-2 flex w-full items-center justify-center gap-0.5 rounded border border-border bg-card/80 py-1.5 text-xs text-accent5 hover:border-accent5/50 hover:bg-card disabled:opacity-40"
         title="Add task"
       >
         <Plus className="h-3 w-3" />
       </button>
 
-      <footer className="mt-2 border-t border-[#2A2F47]/80 pt-2 text-center text-xs leading-snug text-text-muted">
+      <footer className="mt-2 border-t border-border/80 pt-2 text-center text-xs leading-snug text-text-muted">
         <span className="font-medium text-text-primary">{stats.completed}</span> Completed
         <br />
         <span className="font-medium text-text-primary">{stats.notCompleted}</span> Not Completed

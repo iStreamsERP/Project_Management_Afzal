@@ -1,16 +1,16 @@
 import { addLocalDays, formatDateKey, isSameLocalDay, parseLogDate, startOfLocalDay, startOfWeekSunday } from './dates'
 import type { DailyTask } from '../types/dailyTask'
 
-export const DASHBOARD_CARD_BG = '#141726'
-export const BAR_TRACK = '#2A2F47'
+export const DASHBOARD_CARD_BG = 'rgb(var(--color-card))'
+export const BAR_TRACK = 'rgb(var(--color-border))'
 
 export const PROGRESS_COLORS = {
   coral: '#FF6B9D',
   amber: '#FFB84C',
   sky: '#4FC3F7',
   mint: '#00D4AA',
-  empty: '#2A2F47',
-  ringIdle: '#6B7280',
+  empty: 'rgb(var(--color-border))',
+  ringIdle: 'rgb(var(--color-text-muted))',
 } as const
 
 /** Subtle column background tints Sun → Sat */

@@ -3,8 +3,8 @@ import { Skeleton } from '../../components/ui/Skeleton'
 export function DashboardSkeletonTopRow() {
   return (
     <div className="grid grid-cols-1 gap-3 lg:grid-cols-[3fr_2fr]">
-      <Skeleton className="h-[200px] rounded-xl border border-[#2A2F47]" style={{ backgroundColor: '#141726' }} />
-      <Skeleton className="h-[200px] rounded-xl border border-[#2A2F47]" style={{ backgroundColor: '#141726' }} />
+      <Skeleton className="h-[200px] rounded-xl border border-border" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
+      <Skeleton className="h-[200px] rounded-xl border border-border" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
     </div>
   )
 }
@@ -15,8 +15,8 @@ export function DashboardSkeletonColumns() {
       {Array.from({ length: 7 }).map((_, i) => (
         <Skeleton
           key={i}
-          className="h-[320px] rounded-lg border border-[#2A2F47]"
-          style={{ backgroundColor: '#141726' }}
+          className="h-[320px] rounded-lg border border-border"
+          style={{ backgroundColor: 'rgb(var(--color-card))' }}
         />
       ))}
     </div>

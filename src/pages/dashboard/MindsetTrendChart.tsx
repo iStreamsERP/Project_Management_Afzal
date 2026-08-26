@@ -47,7 +47,7 @@ export function MindsetTrendChart({ logs }: Props) {
       <p className="fs-eyebrow">Wellbeing</p>
       <h2 className="mt-1 text-lg font-semibold text-text-primary">Mindset</h2>
       <p className="mt-1 text-sm text-text-muted">Last 14 days · mood, energy, focus</p>
-      <div className="mt-5 h-72 w-full rounded-lg border border-border bg-[#0c0e18] p-2">
+      <div className="mt-5 h-72 w-full rounded-lg border border-border bg-background p-2">
         <ResponsiveContainer width="100%" height="100%">
           <ComposedChart data={data} margin={{ top: 8, right: 12, left: 0, bottom: 4 }}>
             <CartesianGrid stroke={THEME.border} strokeDasharray="4 4" vertical={false} />

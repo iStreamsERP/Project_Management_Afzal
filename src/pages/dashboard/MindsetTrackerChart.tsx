@@ -44,31 +44,31 @@ export function MindsetTrackerChart({ logs, weekDays: weekDaysProp }: Props) {
 
   return (
     <div
-      className="flex h-full min-h-[200px] flex-col rounded-xl border border-[#2A2F47] p-5"
+      className="flex h-full min-h-[200px] flex-col rounded-xl border border-border p-5"
       style={{ backgroundColor: DASHBOARD_CARD_BG }}
     >
       <h2 className="text-base font-semibold text-text-primary">Mindset Tracker</h2>
       <div className="mt-2 min-h-[160px] flex-1">
         <ResponsiveContainer width="100%" height="100%" minHeight={160}>
           <LineChart data={data} margin={{ top: 8, right: 8, left: -8, bottom: 0 }}>
-            <CartesianGrid stroke="#2A2F47" strokeDasharray="3 3" vertical={false} />
+            <CartesianGrid stroke="rgb(var(--color-border))" strokeDasharray="3 3" vertical={false} />
             <XAxis
               dataKey="label"
-              tick={{ fill: '#9CA3AF', fontSize: 11 }}
-              axisLine={{ stroke: '#2A2F47' }}
+              tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 11 }}
+              axisLine={{ stroke: 'rgb(var(--color-border))' }}
               tickLine={false}
             />
             <YAxis
               domain={[0, 10]}
               width={24}
-              tick={{ fill: '#9CA3AF', fontSize: 10 }}
+              tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 10 }}
               axisLine={false}
               tickLine={false}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#1a1d2e',
-                border: '1px solid #2A2F47',
+                backgroundColor: 'rgb(var(--color-card))',
+                border: '1px solid rgb(var(--color-border))',
                 borderRadius: 8,
                 fontSize: 12,
               }}
@@ -80,7 +80,7 @@ export function MindsetTrackerChart({ logs, weekDays: weekDaysProp }: Props) {
               iconSize={8}
               wrapperStyle={{ fontSize: 11, paddingBottom: 4 }}
               formatter={(value) => (
-                <span style={{ color: '#9CA3AF' }}>{value}</span>
+                <span style={{ color: 'rgb(var(--color-text-muted))' }}>{value}</span>
               )}
             />
             <Line

@@ -20,9 +20,9 @@ import { useDashboardData } from './dashboard/useDashboardData'
 
 function WeeklyPlaceholder() {
   return (
-    <div className="rounded-xl border border-dashed border-[#2A2F47] bg-[#141726] px-4 py-10 text-center text-sm text-text-muted">
+    <div className="rounded-xl border border-dashed border-border bg-card px-4 py-10 text-center text-sm text-text-muted">
       Sign in under{' '}
-      <Link to="/settings" className="font-medium text-[#00D4AA] hover:underline">
+      <Link to="/settings" className="font-medium text-accent2 hover:underline">
         Settings
       </Link>{' '}
       to load your week planner.
@@ -109,10 +109,7 @@ export default function DashboardPage() {
         <h1 className="text-3xl font-bold tracking-tight text-text-primary">FlowState</h1>
         <div className="text-right">
           <p className="text-[11px] font-medium uppercase tracking-wide text-text-muted">Week Start Date</p>
-          <p
-            className="mt-1 inline-block rounded px-3 py-1 text-sm font-bold text-[#0c0e18]"
-            style={{ backgroundColor: '#00D4AA' }}
-          >
+          <p className="mt-1 inline-block rounded bg-accent2 px-3 py-1 text-sm font-bold text-background">
             {weekStartLabel}
           </p>
         </div>
@@ -120,14 +117,14 @@ export default function DashboardPage() {
 
       {!token && (
         <p className="text-sm text-text-muted">
-          <Link to="/settings" className="font-medium text-[#00D4AA] hover:underline">
+          <Link to="/settings" className="font-medium text-accent2 hover:underline">
             Sign in
           </Link>{' '}
           to sync daily tasks and mindset.
         </p>
       )}
       {dashboard.error && (
-        <p className="text-sm text-[#FF6B9D]" role="alert">
+        <p className="text-sm text-accent3" role="alert">
           {dashboard.error}
         </p>
       )}
@@ -150,7 +147,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => void dashboard.refetch()}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#2A2F47] px-3 py-1.5 text-xs font-medium text-text-muted hover:border-[#4FC3F7]/50 hover:text-text-primary"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-text-muted hover:border-accent5/50 hover:text-text-primary"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               Refresh
@@ -159,7 +156,7 @@ export default function DashboardPage() {
               type="button"
               onClick={() => void clearWeekTasks()}
               disabled={clearing || dailyTasks.length === 0}
-              className="inline-flex items-center gap-1.5 rounded-lg border border-[#FF6B9D]/40 px-3 py-1.5 text-xs font-medium text-[#FF6B9D] hover:bg-[#FF6B9D]/10 disabled:opacity-40"
+              className="inline-flex items-center gap-1.5 rounded-lg border border-accent3/40 px-3 py-1.5 text-xs font-medium text-accent3 hover:bg-accent3/10 disabled:opacity-40"
             >
               <Trash2 className="h-3.5 w-3.5" />
               {clearing ? 'Clearing…' : 'Clear week'}
@@ -167,7 +164,7 @@ export default function DashboardPage() {
             <button
               type="button"
               onClick={() => openAddModal()}
-              className="inline-flex items-center gap-1.5 rounded-lg bg-[#00D4AA] px-3 py-1.5 text-xs font-semibold text-[#0c0e18] hover:bg-[#00D4AA]/90"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-accent2 px-3 py-1.5 text-xs font-semibold text-background hover:bg-accent2/90"
             >
               <Plus className="h-3.5 w-3.5" />
               Add daily task

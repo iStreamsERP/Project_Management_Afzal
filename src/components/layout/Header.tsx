@@ -5,11 +5,14 @@ import {
   Maximize,
   Menu,
   Minimize,
+  Moon,
   PanelLeftClose,
   Settings2,
   ShieldCheck,
+  Sun,
   Zap,
 } from 'lucide-react'
+import { useTheme } from '../theme-provider'
 import { useAuth } from '../../contexts/AuthContext'
 import { useClickOutside } from '../../hooks/useClickOutside'
 import { cn } from '../../lib/cn'
@@ -22,6 +25,7 @@ type HeaderProps = {
 
 export function Header({ collapsed, setCollapsed, onOpenMobileMenu }: HeaderProps) {
   const { userData, isAdmin, logout } = useAuth()
+  const { theme, setTheme } = useTheme()
   const navigate = useNavigate()
   const [isFullscreen, setIsFullscreen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -87,6 +91,16 @@ export function Header({ collapsed, setCollapsed, onOpenMobileMenu }: HeaderProp
             Admin
           </span>
         )}
+
+        <button
+          type="button"
+          onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+          className="flex h-9 w-9 items-center justify-center rounded-lg text-text-muted transition hover:bg-surface2 hover:text-text-primary"
+          title={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+        </button>
 
         <button
           type="button"

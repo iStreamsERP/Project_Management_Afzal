@@ -25,8 +25,9 @@ const LINE_COLORS = {
 
 const WEEK_BAR_COLORS = ['#6C63FF', '#4FC3F7', '#00D4AA', '#FF6B9D', '#FFB84C'] as const
 
-const CHART_BG = '#141726'
-const GRID = '#2A2F47'
+const CHART_BG = 'rgb(var(--color-card))'
+const GRID = 'rgb(var(--color-border))'
+const TICK = 'rgb(var(--color-text-muted))'
 
 type Props = {
   monthLogs: MindsetLog[]
@@ -56,22 +57,22 @@ export function MindsetChartsPanel({ monthLogs, rangeLogs, year, month, loading 
   if (loading) {
     return (
       <div className="flex h-full min-h-0 gap-2">
-        <Skeleton className="min-h-0 w-[55%] rounded-lg border border-[#2A2F47]" style={{ backgroundColor: CHART_BG }} />
-        <Skeleton className="min-h-0 w-[45%] rounded-lg border border-[#2A2F47]" style={{ backgroundColor: CHART_BG }} />
+        <Skeleton className="min-h-0 w-[55%] rounded-lg border border-border" style={{ backgroundColor: CHART_BG }} />
+        <Skeleton className="min-h-0 w-[45%] rounded-lg border border-border" style={{ backgroundColor: CHART_BG }} />
       </div>
     )
   }
 
   return (
     <div className="flex h-full min-h-0 min-w-0 gap-2">
-      <div className="flex min-h-0 w-[55%] min-w-0 flex-col rounded-lg border border-[#2A2F47] p-2" style={{ backgroundColor: CHART_BG }}>
+      <div className="flex min-h-0 w-[55%] min-w-0 flex-col rounded-lg border border-border p-2" style={{ backgroundColor: CHART_BG }}>
         <p className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-text-muted">Daily metrics (this month)</p>
         <div className="mt-1 min-h-0 flex-1">
           <ResponsiveContainer width="100%" height="100%">
             <LineChart data={lineData} margin={{ top: 4, right: 4, left: -12, bottom: 28 }}>
               <CartesianGrid stroke={GRID} strokeDasharray="3 3" />
-              <XAxis dataKey="label" tick={{ fill: '#9CA3AF', fontSize: 9 }} axisLine={{ stroke: GRID }} />
-              <YAxis domain={[0, 10]} width={22} tick={{ fill: '#9CA3AF', fontSize: 9 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="label" tick={{ fill: TICK, fontSize: 9 }} axisLine={{ stroke: GRID }} />
+              <YAxis domain={[0, 10]} width={22} tick={{ fill: TICK, fontSize: 9 }} axisLine={false} tickLine={false} />
               <Tooltip
                 cursor={false}
                 contentStyle={{
@@ -85,7 +86,7 @@ export function MindsetChartsPanel({ monthLogs, rangeLogs, year, month, loading 
                 verticalAlign="bottom"
                 height={24}
                 wrapperStyle={{ fontSize: 10, paddingTop: 4 }}
-                formatter={(v) => <span style={{ color: '#9CA3AF' }}>{v}</span>}
+                formatter={(v) => <span style={{ color: TICK }}>{v}</span>}
               />
               <Line
                 type="monotone"
@@ -128,14 +129,14 @@ export function MindsetChartsPanel({ monthLogs, rangeLogs, year, month, loading 
         </div>
       </div>
 
-      <div className="flex min-h-0 w-[45%] min-w-0 flex-col rounded-lg border border-[#2A2F47] p-2" style={{ backgroundColor: CHART_BG }}>
+      <div className="flex min-h-0 w-[45%] min-w-0 flex-col rounded-lg border border-border p-2" style={{ backgroundColor: CHART_BG }}>
         <p className="shrink-0 text-[10px] font-semibold uppercase tracking-wide text-text-muted">Weekly mindset score</p>
         <div className="mt-1 min-h-0 flex-1">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={barData} margin={{ top: 4, right: 4, left: -8, bottom: 4 }}>
               <CartesianGrid stroke={GRID} strokeDasharray="3 3" vertical={false} />
-              <XAxis dataKey="name" tick={{ fill: '#9CA3AF', fontSize: 10 }} axisLine={{ stroke: GRID }} />
-              <YAxis domain={[0, 100]} width={28} tick={{ fill: '#9CA3AF', fontSize: 9 }} axisLine={false} tickLine={false} />
+              <XAxis dataKey="name" tick={{ fill: TICK, fontSize: 10 }} axisLine={{ stroke: GRID }} />
+              <YAxis domain={[0, 100]} width={28} tick={{ fill: TICK, fontSize: 9 }} axisLine={false} tickLine={false} />
               <Tooltip
                 cursor={false}
                 contentStyle={{
