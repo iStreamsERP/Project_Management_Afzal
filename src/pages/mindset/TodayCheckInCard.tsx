@@ -69,7 +69,7 @@ export function TodayCheckInCard({ token, todayKey, todayLog, loading, onSaved }
 
   if (loading) {
     return (
-      <div className="flex h-full min-h-0 gap-3 rounded-lg border border-[#2A2F47] bg-[#141726] p-2">
+      <div className="flex h-full min-h-0 gap-3 rounded-lg border border-border bg-card p-2">
         <div className="min-h-0 min-w-0 flex-1 space-y-2">
           <Skeleton className="h-4 w-40" />
           <div className="grid min-h-0 flex-1 grid-cols-2 gap-2">
@@ -84,7 +84,7 @@ export function TodayCheckInCard({ token, todayKey, todayLog, loading, onSaved }
   }
 
   return (
-    <div className="flex h-full min-h-0 gap-3 overflow-hidden rounded-lg border border-[#2A2F47] bg-[#141726] px-3 py-2">
+    <div className="flex h-full min-h-0 gap-3 overflow-hidden rounded-lg border border-border bg-card px-3 py-2">
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <h2 className="shrink-0 text-xs font-semibold uppercase tracking-wide text-text-muted">Today&apos;s Check-in</h2>
         <div className="mt-1 grid min-h-0 flex-1 grid-cols-2 gap-x-3 gap-y-2">
@@ -93,11 +93,11 @@ export function TodayCheckInCard({ token, todayKey, todayLog, loading, onSaved }
           <SliderRow label="Focus" color={FOCUS} value={focus} onChange={setFocus} disabled={!token} />
           <SliderRow label="Motivation" color={MOTIVATION} value={motivation} onChange={setMotivation} disabled={!token} />
         </div>
-        {saveError && <p className="mt-0.5 truncate text-[10px] text-[#FF6B9D]">{saveError}</p>}
+        {saveError && <p className="mt-0.5 truncate text-[10px] text-accent3">{saveError}</p>}
       </div>
-      <div className="flex shrink-0 items-center self-stretch border-l border-[#2A2F47]/80 pl-3">
+      <div className="flex shrink-0 items-center self-stretch border-l border-border/80 pl-3">
         {todayLog ? (
-          <span className="whitespace-nowrap rounded-md bg-[#00D4AA]/15 px-2 py-1 text-xs font-semibold text-[#00D4AA]">
+          <span className="whitespace-nowrap rounded-md bg-accent2/15 px-2 py-1 text-xs font-semibold text-accent2">
             Saved today ✓
           </span>
         ) : (
@@ -105,7 +105,7 @@ export function TodayCheckInCard({ token, todayKey, todayLog, loading, onSaved }
             type="button"
             disabled={!token || saving}
             onClick={() => void save()}
-            className="whitespace-nowrap rounded-lg bg-[#6C63FF] px-3 py-2 text-xs font-semibold text-white hover:brightness-110 disabled:opacity-50"
+            className="whitespace-nowrap rounded-lg bg-accent1 px-3 py-2 text-xs font-semibold text-white hover:brightness-110 disabled:opacity-50"
           >
             {saving ? 'Saving…' : 'Save Check-in'}
           </button>

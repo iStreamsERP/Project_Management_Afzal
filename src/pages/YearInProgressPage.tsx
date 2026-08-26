@@ -131,7 +131,7 @@ export default function YearInProgressPage() {
               </>
             )}
           </div>
-          <div className="flex items-center gap-1 rounded-lg border border-[#2A2F47] bg-[#141726] px-2 py-1">
+          <div className="flex items-center gap-1 rounded-lg border border-border bg-card px-2 py-1">
             <button
               type="button"
               onClick={() => setViewYear((y) => y - 1)}
@@ -155,17 +155,17 @@ export default function YearInProgressPage() {
       </header>
 
       {!token && (
-        <p className="shrink-0 rounded-lg border border-[#2A2F47] bg-[#141726] px-4 py-3 text-text-muted">
-          <Link to="/settings" className="font-medium text-[#6C63FF] hover:underline">
+        <p className="shrink-0 rounded-lg border border-border bg-card px-4 py-3 text-text-muted">
+          <Link to="/settings" className="font-medium text-accent1 hover:underline">
             Sign in
           </Link>{' '}
           to see your activity.
         </p>
       )}
 
-      <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-[#2A2F47] bg-[#0c0e18]/50 p-3">
+      <div className="flex min-h-0 flex-1 flex-col overflow-hidden rounded-xl border border-border bg-background/50 p-3">
         {loading ? (
-          <Skeleton className="min-h-0 flex-1 rounded-lg" style={{ backgroundColor: '#141726' }} />
+          <Skeleton className="min-h-0 flex-1 rounded-lg" style={{ backgroundColor: 'rgb(var(--color-card))' }} />
         ) : (
           <div ref={chartAreaRef} className="flex min-h-0 flex-1 items-center justify-center overflow-hidden">
             <div className="flex max-h-full max-w-full items-start gap-3">
@@ -217,14 +217,14 @@ export default function YearInProgressPage() {
           </div>
         )}
 
-        <div className="mt-2 flex shrink-0 flex-wrap items-center justify-center gap-6 border-t border-[#2A2F47]/80 pt-2 text-[10px] text-text-muted">
+        <div className="mt-2 flex shrink-0 flex-wrap items-center justify-center gap-6 border-t border-border/80 pt-2 text-[10px] text-text-muted">
           <span className="flex items-center gap-2">
-            <span className="inline-block rounded-full bg-gradient-to-br from-[#00D4AA] to-[#6C63FF] shadow-[0_0_8px_rgba(0,212,170,0.45)]" style={{ width: 12, height: 12 }} aria-hidden />
+            <span className="inline-block rounded-full bg-gradient-to-br from-accent2 to-accent1 shadow-[0_0_8px_rgba(0,212,170,0.45)]" style={{ width: 12, height: 12 }} aria-hidden />
             Active day
           </span>
           <span className="flex items-center gap-2">
             <span
-              className="inline-block rounded-full border-2 border-[#3d4466] bg-transparent"
+              className="inline-block rounded-full border-2 border-border-strong bg-transparent"
               style={{ width: 12, height: 12 }}
               aria-hidden
             />
@@ -232,7 +232,7 @@ export default function YearInProgressPage() {
           </span>
           <span className="flex items-center gap-2">
             <span
-              className="inline-block rounded-full border border-dashed border-[#2A2F47] bg-[#141726]/60"
+              className="inline-block rounded-full border border-dashed border-border bg-card/60"
               style={{ width: 12, height: 12 }}
               aria-hidden
             />
@@ -246,9 +246,9 @@ export default function YearInProgressPage() {
 
 function InlineStat({ label, value, accent }: { label: string; value: string; accent?: boolean }) {
   return (
-    <span className="rounded-md border border-[#2A2F47] bg-[#141726] px-2 py-1 tabular-nums">
+    <span className="rounded-md border border-border bg-card px-2 py-1 tabular-nums">
       <span className="text-text-muted">{label} </span>
-      <span className={accent ? 'font-bold text-[#00D4AA]' : 'font-bold text-text-primary'}>{value}</span>
+      <span className={accent ? 'font-bold text-accent2' : 'font-bold text-text-primary'}>{value}</span>
     </span>
   )
 }
@@ -269,11 +269,11 @@ function DayDot({ cell, size }: { cell: YearDayCell; size: number }) {
   let className = 'rounded-full transition-all duration-150 '
   if (cell.completed) {
     className +=
-      'bg-gradient-to-br from-[#00D4AA] to-[#6C63FF] shadow-[0_0_12px_rgba(0,212,170,0.5)] ring-2 ring-[#00D4AA]/30'
+      'bg-gradient-to-br from-accent2 to-accent1 shadow-[0_0_12px_rgba(0,212,170,0.5)] ring-2 ring-accent2/30'
   } else if (cell.isFuture) {
-    className += 'border border-dashed border-[#2A2F47] bg-[#141726]/50'
+    className += 'border border-dashed border-border bg-card/50'
   } else {
-    className += 'border-2 border-[#3d4466] bg-[#141726]/80'
+    className += 'border-2 border-border-strong bg-card/80'
   }
 
   return (

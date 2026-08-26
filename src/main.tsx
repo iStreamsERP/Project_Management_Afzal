@@ -3,15 +3,18 @@ import { createRoot } from 'react-dom/client'
 import { Toaster } from 'react-hot-toast'
 import './index.css'
 import App from './App.tsx'
+import { ThemeProvider } from './components/theme-provider'
 import { AuthProvider } from './contexts/AuthContext'
 import { THEME } from './lib/themeColors'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <>
-      <AuthProvider>
-        <App />
-      </AuthProvider>
+      <ThemeProvider defaultTheme="dark" storageKey="flowstate-ui-theme">
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
       <Toaster
         position="bottom-center"
         toastOptions={{

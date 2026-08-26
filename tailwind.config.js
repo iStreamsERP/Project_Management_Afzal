@@ -1,22 +1,27 @@
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: 'class',
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     extend: {
       colors: {
-        background: '#080910',
-        surface: '#10121c',
-        surface2: '#1C2035',
+        background: 'rgb(var(--color-background) / <alpha-value>)',
+        surface: 'rgb(var(--color-surface) / <alpha-value>)',
+        surface2: 'rgb(var(--color-surface2) / <alpha-value>)',
+        card: 'rgb(var(--color-card) / <alpha-value>)',
         accent1: '#6C63FF',
         accent2: '#00D4AA',
         accent3: '#FF6B9D',
         accent4: '#FFB84C',
         accent5: '#4FC3F7',
-        border: '#2A2F47',
+        border: {
+          DEFAULT: 'rgb(var(--color-border) / <alpha-value>)',
+          strong: 'rgb(var(--color-border-strong) / <alpha-value>)',
+        },
         // Maps to utilities `text-text-primary` and `text-text-muted`
         text: {
-          primary: '#F0F0F5',
-          muted: '#7A7F9A',
+          primary: 'rgb(var(--color-text-primary) / <alpha-value>)',
+          muted: 'rgb(var(--color-text-muted) / <alpha-value>)',
         },
       },
       fontFamily: {

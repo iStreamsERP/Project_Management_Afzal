@@ -44,7 +44,7 @@ export function OverallProgressChart({ weekDays, tasks }: Props) {
 
   return (
     <div
-      className="flex h-full min-h-[200px] flex-col rounded-xl border border-[#2A2F47] p-5"
+      className="flex h-full min-h-[200px] flex-col rounded-xl border border-border p-5"
       style={{ backgroundColor: DASHBOARD_CARD_BG }}
     >
       <h2 className="text-base font-semibold text-text-primary">Overall Progress</h2>
@@ -52,26 +52,26 @@ export function OverallProgressChart({ weekDays, tasks }: Props) {
         <div className="min-w-0 flex-[3]">
           <ResponsiveContainer width="100%" height="100%" minHeight={160}>
             <BarChart data={data} margin={{ top: 4, right: 4, left: -12, bottom: 0 }} barCategoryGap="18%">
-              <CartesianGrid stroke="#2A2F47" strokeDasharray="3 3" vertical={false} />
+              <CartesianGrid stroke="rgb(var(--color-border))" strokeDasharray="3 3" vertical={false} />
               <XAxis
                 dataKey="label"
-                tick={{ fill: '#9CA3AF', fontSize: 11 }}
-                axisLine={{ stroke: '#2A2F47' }}
+                tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 11 }}
+                axisLine={{ stroke: 'rgb(var(--color-border))' }}
                 tickLine={false}
               />
               <YAxis
                 allowDecimals={false}
                 domain={[0, maxY]}
                 width={24}
-                tick={{ fill: '#9CA3AF', fontSize: 10 }}
+                tick={{ fill: 'rgb(var(--color-text-muted))', fontSize: 10 }}
                 axisLine={false}
                 tickLine={false}
               />
               <Tooltip
                 cursor={{ fill: 'rgba(255,255,255,0.04)' }}
                 contentStyle={{
-                  backgroundColor: '#1a1d2e',
-                  border: '1px solid #2A2F47',
+                  backgroundColor: 'rgb(var(--color-card))',
+                  border: '1px solid rgb(var(--color-border))',
                   borderRadius: 8,
                   fontSize: 12,
                 }}
@@ -95,7 +95,7 @@ export function OverallProgressChart({ weekDays, tasks }: Props) {
             </BarChart>
           </ResponsiveContainer>
         </div>
-        <div className="flex flex-[2] flex-col items-center justify-center border-l border-[#2A2F47] pl-4">
+        <div className="flex flex-[2] flex-col items-center justify-center border-l border-border pl-4">
           <DayProgressRing
             pct={weekStats.pct}
             ringColor={weekStats.total > 0 ? PROGRESS_COLORS.mint : BAR_TRACK}
